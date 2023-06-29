@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>URL Shortener</h2>
+    <form method="POST" action="/shorten">
+        <label for="url">Enter URL:</label>
+        <input type="text" id="url" name="url" required><br><br>
+
+        <input type="submit" value="Shorten">
+    </form>
+{% endblock %}
