@@ -47,10 +47,10 @@ def login():
 
 @app.route('/shorten', methods=['POST', 'GET'])
 def shorten():
-    original_url = request.form['url']
+    
 
     if request.method == 'POST':
-        original_url = request.form['original_url']
+        original_url = request.form['url']
         short_url = generate_short_url()  # Generate a unique short URL
         url = Url(original_url=original_url, short_url=short_url)
         db.session.add(url)
@@ -58,7 +58,7 @@ def shorten():
 
         flash('Shortened URL created successfully!')
      
-    return render_template('shortner.html')
+    return render_template('shortener.html')
 
 @app.route("/about")
 def about():
