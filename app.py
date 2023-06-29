@@ -1,10 +1,11 @@
 
 from flask_migrate import Migrate
-from flask import Flask, abort
+from flask import Flask
 from extentions import db
 import random
 import string
 from models import Url
+
 
 #from flask_jwt_extended import JWTManager
 #from flask_restx import Api
@@ -32,7 +33,7 @@ def create_app():
 def generate_short_url():
     characters = string.ascii_letters + string.digits
     short_url = ''.join(random.choice(characters) for _ in range(6))  # Generate a 6-character short URL
-
+    
     # Check if the generated short URL already exists in the database
     existing_url = Url.query.filter_by(short_url=short_url).first()
     if existing_url:
@@ -40,6 +41,7 @@ def generate_short_url():
         return generate_short_url()
     
     return short_url
+
 
 
 

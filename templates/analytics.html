@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>URL Analytics</h2>
+<p>Original URL: {{ url.original_url }}</p>
+<p>Short URL: {{ url.short_url }}</p>
+<p>Clicks: {{ url.clicks }}</p>
+
+<h3>Referrers:</h3>
+{% if url.referrers %}
+    <ul>
+    {% for referrer, count in url.referrers.items() %}
+        <li>{{ referrer }} - {{ count }} clicks</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No referrers yet.</p>
+{% endif %}
+
+{% endblock %}
